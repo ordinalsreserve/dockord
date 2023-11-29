@@ -9,6 +9,10 @@ RUN apt update -y && apt install -y sudo software-properties-common curl tar git
 # Run the script to install 'ord' binary
 RUN curl --proto '=https' --tlsv1.2 -fsLS https://ordinals.com/install.sh | bash -s
 
+RUN mkdir /workdir
+
+ENTRYPOINT /workdir
+
 # REST interface
 EXPOSE 8080
 
