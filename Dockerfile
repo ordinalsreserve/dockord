@@ -9,7 +9,17 @@ RUN apt update -y && apt install -y sudo software-properties-common curl tar git
 # Run the script to install 'ord' binary
 RUN curl --proto '=https' --tlsv1.2 -fsLS https://ordinals.com/install.sh | bash -s
 
-ENTRYPOINT ~
+# Create a new user
+RUN adduser --disabled-password --gecos '' myuser
+
+# Create a new directory
+RUN mkdir /workdir
+
+# Change ownership to the new user
+RUN chown me:me /workdir
+
+# Change permissions
+RUN chmod 700 /workdir
 
 # REST interface
 EXPOSE 8080
