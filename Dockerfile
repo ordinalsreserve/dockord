@@ -12,7 +12,4 @@ RUN curl --proto '=https' --tlsv1.2 -fsLS https://ordinals.com/install.sh | bash
 # REST interface
 EXPOSE 8080
 
-# Set the entrypoint
-ENTRYPOINT ["ord"]
-
-CMD ["--data-dir", "/index-data", "server", "--http-port=8080"]
+CMD ["ord", "--data-dir", "/index-data", "server", "--http-port=8080"]
