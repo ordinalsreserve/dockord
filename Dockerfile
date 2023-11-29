@@ -14,12 +14,6 @@ RUN chmod +x /usr/local/bin/install.sh &&\
     install.sh --tag ${VERSION} --target x86_64-unknown-linux-gnu &&\
     sudo mv $HOME/bin/ord /usr/local/bin/ord
 
-# Prevents `VOLUME $DIR/index-data/` being created as owned by `root`
-RUN mkdir -p "$DIR/index-data/"
-
-# Expose volume containing all `index-data` data
-VOLUME $DIR/index-data/
-
 # REST interface
 EXPOSE 8080
 
